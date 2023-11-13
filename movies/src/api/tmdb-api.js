@@ -174,3 +174,18 @@ export const getMovie = (args) => {
        throw error
     });
   };
+
+  export const getShowEpisodes = (id ,seasonNum) => {
+    return fetch(
+      `https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}&append_to_response=season/${seasonNum}`
+    ).then((response) => {
+      if (!response.ok) {
+        throw new Error(response.json().message);
+      }
+      return response.json();
+    })
+    .catch((error) => {
+       throw error
+    });
+  };
+  
