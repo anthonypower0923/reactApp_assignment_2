@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 
-export const MoviesContext = React.createContext(null);
+export const TVShowsContext = React.createContext(null);
 
-const MoviesContextProvider = (props) => {
+const TVShowsContextProvider = (props) => {
   const [favorites, setFavorites] = useState( [] )
   const [myReviews, setMyReviews] = useState( {} )
   const [mustWatch, setMustWatch] = useState( [] )
 
-  const addToFavorites = (movie) => {
+  const addToFavorites = (show) => {
     let newFavorites = [];
-    if (!favorites.includes(movie.id)){
-      newFavorites = [...favorites, movie.id];
+    if (!favorites.includes(show.id)){
+      newFavorites = [...favorites, show.id];
     }
     else{
       newFavorites = [...favorites];
@@ -18,28 +18,27 @@ const MoviesContextProvider = (props) => {
     setFavorites(newFavorites)
   };
 
-  const addReview = (movie, review) => {
-    setMyReviews( {...myReviews, [movie.id]: review } )
+  const addReview = (show, review) => {
+    setMyReviews( {...myReviews, [show.id]: review } )
   };
   console.log(myReviews);
   
   // We will use this function in a later section
-  const removeFromFavorites = (movie) => {
+  const removeFromFavorites = (show) => {
     setFavorites( favorites.filter(
-      (mId) => mId !== movie.id
+      (mId) => mId !== show.id
     ) )
   };
 
-  const addToWatchList = (movie) => {
+  const addToWatchList = (show) => {
     let playlist = [];
-    playlist = [...mustWatch, movie.id];
+    playlist = [...mustWatch, show.id];
     setMustWatch( playlist )
   };
   console.log(mustWatch);
 
-
   return (
-    <MoviesContext.Provider
+    <TVShowsContext.Provider
       value={{
         favorites,
         addToFavorites,
@@ -49,8 +48,8 @@ const MoviesContextProvider = (props) => {
       }}
     >
       {props.children}
-    </MoviesContext.Provider>
+    </TVShowsContext.Provider>
   );
 };
 
-export default MoviesContextProvider;
+export default TVShowsContextProvider;
