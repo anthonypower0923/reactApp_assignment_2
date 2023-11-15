@@ -21,7 +21,6 @@ const TVShowsContextProvider = (props) => {
   const addReview = (show, review) => {
     setMyReviews( {...myReviews, [show.id]: review } )
   };
-  console.log(myReviews);
   
   // We will use this function in a later section
   const removeFromFavorites = (show) => {
@@ -35,7 +34,6 @@ const TVShowsContextProvider = (props) => {
     playlist = [...mustWatch, show.id];
     setMustWatch( playlist )
   };
-  console.log(mustWatch);
 
   return (
     <TVShowsContext.Provider

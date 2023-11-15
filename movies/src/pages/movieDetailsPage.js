@@ -14,6 +14,11 @@ const MoviePage = (props) => {
     getMovie
   );
 
+  // const { data: movie, e, il, ie } = useQuery(
+  //   ["movie", { id: id }],
+  //   getMovieCast
+  // );
+
   if (isLoading) {
     return <Spinner />;
   }

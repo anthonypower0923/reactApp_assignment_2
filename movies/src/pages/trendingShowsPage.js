@@ -17,7 +17,7 @@ const TrendingShowsPage = (props) => {
     return <h1>{error.message}</h1>
   }  
   const shows = data.results;
-  console.log(shows)
+//   console.log(shows)
 
   // Redundant, but necessary to avoid app crashing.
   const favorites = shows.filter(m => m.favorite)
@@ -26,7 +26,7 @@ const TrendingShowsPage = (props) => {
 
   return (
     <PageTemplate
-      title="Discover Shows"
+      title="Trending Shows"
       shows={shows}
       action={(show) => {
         return <AddToFavoritesIconTV show={show} />

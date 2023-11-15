@@ -1,11 +1,10 @@
 import React from "react";
 import { useParams } from 'react-router-dom';
 import PageTemplate from "../components/templateShowPage";
-import { getShow } from '../api/tmdb-api'
+import { getShow} from '../api/tmdb-api'
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner'
 import ShowDetails from "../components/showDetails";
-// import useMovie from "../hooks/useMovie";
 
 const ShowPage = (props) => {
   const { id } = useParams();

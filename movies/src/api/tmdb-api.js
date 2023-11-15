@@ -175,9 +175,38 @@ export const getMovie = (args) => {
     });
   };
 
-  export const getShowEpisodes = (id ,seasonNum) => {
+  export const getSimilarMovies = (id) => {
     return fetch(
-      `https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}&append_to_response=season/${seasonNum}`
+      `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
+    ).then((response) => {
+      if (!response.ok) {
+        throw new Error(response.json().message);
+      }
+      return response.json();
+    })
+    .catch((error) => {
+       throw error
+    });
+  };
+
+  export const getSimilarShows = (id) => {
+    return fetch(
+      `https://api.themoviedb.org/3/tv/${id}/similar?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
+    ).then((response) => {
+      if (!response.ok) {
+        throw new Error(response.json().message);
+      }
+      return response.json();
+    })
+    .catch((error) => {
+       throw error
+    });
+  };
+
+  // By entering in a season via a form episodes for that season can be obtained
+  export const getShowEpisodes = (id ,season) => {
+    return fetch(
+      `https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}&append_to_response=season/${season}`
     ).then((response) => {
       if (!response.ok) {
         throw new Error(response.json().message);

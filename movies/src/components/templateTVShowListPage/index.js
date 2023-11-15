@@ -4,7 +4,7 @@ import FilterCard from "../filterMoviesCard";
 import TVShowList from "../tvShowList";
 import Grid from "@mui/material/Grid";
 
-function TVShowListPageTemplate({ shows, name, action }) {
+function TVShowListPageTemplate({ shows, title, action }) {
   const [nameFilter, setNameFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
   const genreId = Number(genreFilter);
@@ -25,7 +25,7 @@ function TVShowListPageTemplate({ shows, name, action }) {
   return (
     <Grid container sx={{ padding: '20px' }}>
       <Grid item xs={12}>
-        <Header name={name} />
+        <Header title={title} />
       </Grid>
       <Grid item container spacing={5}>
         <Grid key="find" item xs={12} sm={6} md={4} lg={3} xl={2}>

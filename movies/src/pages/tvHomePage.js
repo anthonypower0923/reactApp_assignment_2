@@ -17,7 +17,7 @@ const TVHomePage = (props) => {
     return <h1>{error.message}</h1>
   }  
   const shows = data.results;
-  console.log(shows)
+  // console.log(shows)
 
   // Redundant, but necessary to avoid app crashing.
   const favorites = shows.filter(m => m.favorite)
