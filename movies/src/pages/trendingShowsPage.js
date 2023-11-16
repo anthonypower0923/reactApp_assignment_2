@@ -22,7 +22,7 @@ const TrendingShowsPage = (props) => {
   // Redundant, but necessary to avoid app crashing.
   const favorites = shows.filter(m => m.favorite)
   localStorage.setItem('favorites', JSON.stringify(favorites))
-  const addToFavorites = (showId) => true 
+  // const addToFavorites = (showId) => true 
 
   return (
     <PageTemplate

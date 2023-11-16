@@ -9,6 +9,7 @@ import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews"
+import MovieCredits from "../credits";
 
 
 const root = {
@@ -68,7 +69,6 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
             <Chip label={g.name} sx={{...chip}} />
           </li>
           ))}
-          {/* <Chip label={"United States of America"} sx={{...chip}} /> */}
       </Paper>
       <Fab
         color="secondary"
@@ -80,13 +80,14 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
           right: '1em'
         }}
       >
+        
         <NavigationIcon />
-        Reviews
+        Credits
       </Fab>
       <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-        <MovieReviews movie={movie} />
+        <MovieCredits movie={movie} />
       </Drawer>
       </>
   );
 };
-export default MovieDetails ;
+export default MovieDetails;

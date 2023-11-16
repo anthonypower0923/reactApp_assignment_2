@@ -1,4 +1,6 @@
 import React, { useEffect, useState }  from "react";
+import { excerpt } from "../../util";
+import { Link } from "react-router-dom";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -6,16 +8,14 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Link } from "react-router-dom";
-import { getShowReviews } from "../../api/tmdb-api";
-import { excerpt } from "../../util";
+import { getMovieCredits } from "../../api/tmdb-api";
 
-export default function ShowReviews({ show }) {
-  const [reviews, setReviews] = useState([]);
+export default function MovieReviews({ movie }) {
+  const [credits, setCredits] = useState([]);
 
   useEffect(() => {
-    getShowReviews(show.id).then((reviews) => {
-      setReviews(reviews);
+    getMovieCredits(movie.id).then((credits) => {
+      setCredits(credits);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -31,18 +31,17 @@ export default function ShowReviews({ show }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {reviews.map((r) => (
-            <TableRow key={r.id}>
+          {credits.map((movie) => (
+            <TableRow key={movie.id}>
               <TableCell component="th" scope="row">
-                {r.author}
+                {movie.name}
               </TableCell>
-              <TableCell >{excerpt(r.content)}</TableCell>
               <TableCell >
               <Link
-                  to={`/tvReviews/${r.id}`}
+                  to={`/credits/${movie.id}`}
                   state={{
-                      review: r,
-                      show: show,
+                      credits: movie,
+                      movie: movie,
                   }}
                 >
                   Full Review

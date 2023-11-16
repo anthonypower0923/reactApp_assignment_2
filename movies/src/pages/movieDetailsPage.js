@@ -5,7 +5,6 @@ import PageTemplate from "../components/templateMoviePage";
 import { getMovie } from '../api/tmdb-api'
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner'
-// import useMovie from "../hooks/useMovie";
 
 const MoviePage = (props) => {
   const { id } = useParams();
@@ -13,11 +12,6 @@ const MoviePage = (props) => {
     ["movie", { id: id }],
     getMovie
   );
-
-  // const { data: movie, e, il, ie } = useQuery(
-  //   ["movie", { id: id }],
-  //   getMovieCast
-  // );
 
   if (isLoading) {
     return <Spinner />;
