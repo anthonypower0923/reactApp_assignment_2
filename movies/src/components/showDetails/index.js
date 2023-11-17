@@ -86,7 +86,12 @@ const ShowDetails = ({ show }) => {  // Don't miss this!
         <NavigationIcon />
         Reviews
       </Fab>
-      <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+      <Drawer
+      PaperProps={{
+        sx: { width: "90%" },
+      }}
+      
+      anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
         <ShowReviews show={show} />
       </Drawer>
       </>
