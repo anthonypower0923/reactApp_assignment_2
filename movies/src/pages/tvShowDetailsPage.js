@@ -5,6 +5,7 @@ import { getShow} from '../api/tmdb-api'
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner'
 import ShowDetails from "../components/showDetails";
+import ColorTabs from "../components/colorTabs";
 
 const ShowPage = (props) => {
   const { id } = useParams();
@@ -27,6 +28,7 @@ const ShowPage = (props) => {
         <>
           <PageTemplate show={show}>
             <ShowDetails show={show} />
+            {/* <ColorTabs show ={show} /> */}
           </PageTemplate>
         </>
       ) : (

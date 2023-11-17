@@ -1,6 +1,4 @@
 import React, { useEffect, useState }  from "react";
-import { excerpt } from "../../util";
-import { Link } from "react-router-dom";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -10,7 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { getMovieCredits } from "../../api/tmdb-api";
 
-export default function MovieReviews({ movie }) {
+export default function MovieCredits({ movie }) {
   const [credits, setCredits] = useState([]);
 
   useEffect(() => {
@@ -18,34 +16,26 @@ export default function MovieReviews({ movie }) {
       setCredits(credits);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  },  []);
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={{minWidth: 550}} aria-label="reviews table">
+      <Table sx={{minWidth: 550}} aria-label="cast table">
         <TableHead>
           <TableRow>
-            <TableCell >Author</TableCell>
-            <TableCell align="center">Excerpt</TableCell>
+          <TableCell >Actors Name</TableCell>
+            <TableCell align="center">Character Played</TableCell>
             <TableCell align="right">More</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {credits.map((movie) => (
-            <TableRow key={movie.id}>
+          {credits?.map(credit => (
+            <TableRow key={credit.id}>
               <TableCell component="th" scope="row">
-                {movie.name}
+                {credit.name}
               </TableCell>
-              <TableCell >
-              <Link
-                  to={`/credits/${movie.id}`}
-                  state={{
-                      credits: movie,
-                      movie: movie,
-                  }}
-                >
-                  Full Review
-                </Link>
+              <TableCell component="th" scope="row" align="center">
+                {credit.character}
               </TableCell>
             </TableRow>
           ))}

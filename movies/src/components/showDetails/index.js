@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import Drawer from "@mui/material/Drawer";
 import ShowReviews from "../showReviews"
+import MovieCredits from "../credits";
 
 
 const root = {
@@ -47,12 +48,20 @@ const ShowDetails = ({ show }) => {  // Don't miss this!
         ))}
       </Paper>
       <Paper component="ul" sx={{...root}}>
-        <Chip icon={<AccessTimeIcon />} label={`${show.runtime} min.`} />
+        <Chip icon={<AccessTimeIcon />} label={`${show.episode_run_time} min.`} />
         <Chip
           icon={<StarRate />}
           label={`${show.vote_average} (${show.vote_count}`}
         />
-        <Chip label={`Released: ${show.release_date}`} />
+        </Paper>
+      <Paper component="ul" sx={{...root}}>
+      <Chip
+          label={`${show.number_of_episodes} episodes`}
+        />
+        <Chip
+          label={`Number of Seasons: ${show.number_of_seasons}`}
+        />
+        <Chip label={`First Aired: ${show.first_air_date}`} />
       </Paper>
       <Paper component="ul" sx={{...root}}>
       <li>

@@ -25,6 +25,7 @@ const chip = { margin: 0.5 };
 const MovieDetails = ({ movie }) => {  // Don't miss this!
   const [drawerOpen, setDrawerOpen] = useState(false);
 
+
   return (
     <>
       <Typography variant="h5" component="h3">
@@ -70,6 +71,9 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
           </li>
           ))}
       </Paper>
+      <Paper component="ul" sx={{...root}}>
+          <MovieCredits movie={movie} />
+      </Paper>
       <Fab
         color="secondary"
         variant="extended"
@@ -82,7 +86,7 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
       >
         
         <NavigationIcon />
-        Credits
+        Reviews
       </Fab>
       <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
         <MovieCredits movie={movie} />

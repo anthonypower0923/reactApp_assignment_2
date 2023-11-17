@@ -141,10 +141,10 @@ export const getMovie = (args) => {
 
   export const getMovieCredits = (id) => {
     return fetch(
-      `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
+      `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}`
     ).then((res) => res.json())
     .then((json) => {
-      return json.results;
+      return json.cast;
     });
   }
 
@@ -214,14 +214,9 @@ export const getMovie = (args) => {
   export const getShowEpisodes = (id ,season) => {
     return fetch(
       `https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}&append_to_response=season/${season}`
-    ).then((response) => {
-      if (!response.ok) {
-        throw new Error(response.json().message);
-      }
-      return response.json();
-    })
-    .catch((error) => {
-       throw error
+    ).then((res) => res.json())
+    .then((json) => {
+      return json.season.episodes;
     });
   };
   
