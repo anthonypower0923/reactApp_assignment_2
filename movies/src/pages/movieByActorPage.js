@@ -9,7 +9,7 @@ import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
 const MovieByActorPage = (props) => {
     const {id} = useParams();
     const { data, error, isLoading, isError } = useQuery(
-      ["movieByActor", { id: id }],
+      ["moviesByActor", { id: id }],
       GetMoviesByActor
     );
 
