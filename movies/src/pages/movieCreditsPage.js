@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import PageTemplate from "../components/templateMoviePage";
-import MovieCredits from "../components/credits";
+import MovieCredits from "../components/movieCredits";
 
 const MovieCreditsPage = (props) => {
   let location = useLocation();

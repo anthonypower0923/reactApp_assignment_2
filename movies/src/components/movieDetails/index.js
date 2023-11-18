@@ -9,7 +9,9 @@ import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews"
-import MovieCredits from "../credits";
+import MovieCredits from "../movieCredits";
+import Button from '@mui/material/Button';
+import { Link } from "react-router-dom";
 
 
 const root = {
@@ -72,6 +74,9 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
           ))}
       </Paper>
       <Paper component="ul" sx={{...root}}>
+      <Button component={Link} to={`/similar/${movie.id}`} variant="contained" color="primary">
+  Similar Movies
+</Button>
           <MovieCredits movie={movie} />
       </Paper>
       <Fab

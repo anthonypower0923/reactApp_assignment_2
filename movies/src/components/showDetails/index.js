@@ -8,7 +8,9 @@ import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import Drawer from "@mui/material/Drawer";
 import ShowReviews from "../showReviews"
-import MovieCredits from "../credits";
+import Button from '@mui/material/Button';
+import { Link } from "react-router-dom";
+import ShowCredits from "../showCredits";
 
 
 const root = {
@@ -72,6 +74,12 @@ const ShowDetails = ({ show }) => {  // Don't miss this!
             <Chip label={g.name} sx={{...chip}} />
           </li>
           ))}
+      </Paper>
+      <Paper component="ul" sx={{...root}}>
+      <Button component={Link} to={`/similar/${show.id}`} variant="contained" color="primary">
+  Similar Shows
+</Button>
+<ShowCredits show={show} />
       </Paper>
       <Fab
         color="secondary"

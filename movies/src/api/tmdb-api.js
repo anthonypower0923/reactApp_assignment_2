@@ -144,6 +144,16 @@ export const getMovie = (args) => {
       `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}`
     ).then((res) => res.json())
     .then((json) => {
+      console.log(json.cast)
+      return json.cast;
+    });
+  }
+
+  export const getShowCredits = (id) => {
+    return fetch(
+      `https://api.themoviedb.org/3/tv/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
+    ).then((res) => res.json())
+    .then((json) => {
       return json.cast;
     });
   }
@@ -182,9 +192,11 @@ export const getMovie = (args) => {
     });
   };
 
-  export const getSimilarMovies = (id) => {
+  export const getSimilarMovies = ({queryKey}) => {
+    const [, idPart] = queryKey;
+    const { id } = idPart;
     return fetch(
-      `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
+      `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1&nclude_adult=false`
     ).then((response) => {
       if (!response.ok) {
         throw new Error(response.json().message);
@@ -196,9 +208,11 @@ export const getMovie = (args) => {
     });
   };
 
-  export const getSimilarShows = (id) => {
+  export const getSimilarShows = ({queryKey}) => {
+    const [, idPart] = queryKey;
+    const { id } = idPart;
     return fetch(
-      `https://api.themoviedb.org/3/tv/${id}/similar?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
+      `https://api.themoviedb.org/3/tv/${id}/similar?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1&nclude_adult=false`
     ).then((response) => {
       if (!response.ok) {
         throw new Error(response.json().message);
@@ -208,15 +222,25 @@ export const getMovie = (args) => {
     .catch((error) => {
        throw error
     });
+  };
+
+  export const GetMoviesByActor = (id) => {
+    return fetch(
+      `https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
+    )
+      .then((res) => res.json())
+      .then((json) => {
+        return json.cast;
+      });
   };
 
   // By entering in a season via a form episodes for that season can be obtained
-  export const getShowEpisodes = (id ,season) => {
+  export const getShowEpisodes = (id) => {
     return fetch(
-      `https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}&append_to_response=season/${season}`
+      `https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}&append_to_response=season/1`
     ).then((res) => res.json())
     .then((json) => {
-      return json.season.episodes;
+      return json.episodes;
     });
   };
   
