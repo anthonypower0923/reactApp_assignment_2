@@ -21,6 +21,7 @@ import ShowReviewPage from "./pages/showReviewPage";
 import SimilarMoviesPage from "./pages/similarMoviesPage";
 import SimilarShowsPage from "./pages/similarShowsPage";
 import MovieByActorPage from "./pages/movieByActorPage";
+import ShowsByActorPage from "./pages/showsByActor";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -75,6 +76,11 @@ const App = () => {
             <Route path="/similar/:id" element={
             <TVShowsContextProvider>
               <SimilarShowsPage/> 
+            </TVShowsContextProvider>
+            } />
+            <Route path="/tv/actor/:id" element={
+            <TVShowsContextProvider>
+              <ShowsByActorPage/> 
             </TVShowsContextProvider>
             } />
           <Route path="/" element={<HomePage />} />

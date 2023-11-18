@@ -144,7 +144,6 @@ export const getMovie = (args) => {
       `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}`
     ).then((res) => res.json())
     .then((json) => {
-      console.log(json.cast)
       return json.cast;
     });
   }
@@ -224,11 +223,27 @@ export const getMovie = (args) => {
     });
   };
 
-  export const GetMoviesByActor = ({queryKey}) => {
+  export const getMoviesByActor = ({queryKey}) => {
     const [, idPart] = queryKey;
     const { id } = idPart;
     return fetch(
       `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&with_people=${id}`
+    ).then((response) => {
+      if (!response.ok) {
+        throw new Error(response.json().message);
+      }
+      return response.json();
+    })
+    .catch((error) => {
+       throw error
+    });
+  };
+
+  export const getShowsByActor = ({queryKey}) => {
+    const [, idPart] = queryKey;
+    const { id } = idPart;
+    return fetch(
+      `https://api.themoviedb.org/3/person/${id}/tv_credits?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
     ).then((response) => {
       if (!response.ok) {
         throw new Error(response.json().message);

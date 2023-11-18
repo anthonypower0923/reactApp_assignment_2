@@ -7,6 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { getShowCredits } from "../../api/tmdb-api";
+import { Link } from "react-router-dom";
 
 export default function ShowCredits({ show }) {
   const [credits, setCredits] = useState([]);
@@ -29,13 +30,23 @@ export default function ShowCredits({ show }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {credits?.map(credit => (
-            <TableRow key={credit.id}>
+          {credits?.map(showCredit => (
+            <TableRow key={showCredit.id}>
               <TableCell component="th" scope="row">
-                {credit.name}
+                {showCredit.name}
               </TableCell>
               <TableCell component="th" scope="row" align="center">
-                {credit.character}
+                {showCredit.character}
+              </TableCell>
+              <TableCell component="th" scope="row" align="center">
+              <Link
+                  to={`/tv/actor/${showCredit.id}`}
+                  state={{
+                      show: show,
+                  }}
+                >
+                  Shows Starred In
+                </Link>
               </TableCell>
             </TableRow>
           ))}

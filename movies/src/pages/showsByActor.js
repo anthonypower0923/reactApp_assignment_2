@@ -1,16 +1,16 @@
 import React from "react";
 import { useParams } from 'react-router-dom';
-import {getMoviesByActor} from "../api/tmdb-api";
-import PageTemplate from '../components/templateMovieListPage';
+import {getShowsByActor} from "../api/tmdb-api";
+import PageTemplate from '../components/templateTVShowListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
-import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
+import AddToFavoritesIconTV from '../components/cardIcons/addToFavoritesTV'
 
-const MovieByActorPage = (props) => {
+const ShowsByActorPage = (props) => {
     const {id} = useParams();
     const { data, error, isLoading, isError } = useQuery(
-      ["moviesByActor", { id: id }],
-      getMoviesByActor
+      ["showsByActor", { id: id }],
+      getShowsByActor
     );
 
     // console.log(GetMoviesByActor(id))
@@ -22,25 +22,25 @@ const MovieByActorPage = (props) => {
     if (isError) {
       return <h1>{error.message}</h1>
     }  
-    const movies = data.results;
+    const shows = data.cast;
   
     // Redundant, but necessary to avoid app crashing.
-    const favorites = movies.filter(m => m.favorite)
+    const favorites = shows.filter(m => m.favorite)
     localStorage.setItem('favorites', JSON.stringify(favorites))
-    const addToFavorites = (movieId) => true 
+    const addToFavorites = (showId) => true 
   
     return (
             <PageTemplate
-            title="Actors Movies"
-            movies={movies}
-            action={(movie) => {
+            title="Actors Shows"
+            shows={shows}
+            action={(show) => {
               return (
                 <>
-                  <AddToFavoritesIcon movie={movie} />
+                  <AddToFavoritesIconTV show={show} />
                 </>
               ); 
             }}
           />
   );
   };
-  export default MovieByActorPage;
+  export default ShowsByActorPage;
