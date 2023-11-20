@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Header from "../headerMovieList";
-import FilterCard from "../filterMoviesCard";
+import FilterCard from "../filterShowsCard";
 import TVShowList from "../tvShowList";
 import Grid from "@mui/material/Grid";
 import Typography from '@mui/material/Typography';
@@ -25,7 +25,7 @@ function TVShowListPageTemplate({ shows, title, action }) {
 
   const handleChange = (type, value) => {
     if (type === "name") setNameFilter(value);
-    else setGenreFilter(value);
+      else setGenreFilter(value);
   };
 
   const handlePageChange = (event, value) => {
@@ -44,7 +44,7 @@ function TVShowListPageTemplate({ shows, title, action }) {
         <Grid key="find" item xs={12} sm={6} md={4} lg={3} xl={2}>
           <FilterCard
             onUserInput={handleChange}
-            titleFilter={nameFilter}
+            titleFilter={nameFilter} 
             genreFilter={genreFilter}
           />
         </Grid>

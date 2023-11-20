@@ -40,7 +40,6 @@ const MoviesContextProvider = (props) => {
   let pageNum = 1
   pageNum = page
   setPage(pageNum)
-  console.log(pageNum)
 };
 
 
