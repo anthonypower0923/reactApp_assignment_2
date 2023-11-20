@@ -13,9 +13,6 @@ const SimilarMoviesPage = (props) => {
     getSimilarMovies
   );
 
-
-  console.log(id)
-
   if (isLoading) {
     return <Spinner />
   }

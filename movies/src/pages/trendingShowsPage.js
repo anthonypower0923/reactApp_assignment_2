@@ -4,10 +4,14 @@ import PageTemplate from '../components/templateTVShowListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 import AddToFavoritesIconTV from '../components/cardIcons/addToFavoritesTV'
+import { TVShowsContext } from "../contexts/tvShowsContext";
+import { useContext } from "react";
 
 const TrendingShowsPage = (props) => {
-
-  const {  data, error, isLoading, isError }  = useQuery('trendingShows', getTrendingShows)
+  const context = useContext(TVShowsContext);
+  let  pageNum = context.page
+  const {  data , error, isLoading, isError }  = useQuery(['trendingShows', {pageNum: pageNum}]
+  ,getTrendingShows)
 
   if (isLoading) {
     return <Spinner />

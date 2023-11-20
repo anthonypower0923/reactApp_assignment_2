@@ -6,6 +6,7 @@ const MoviesContextProvider = (props) => {
   const [favorites, setFavorites] = useState( [] )
   const [myReviews, setMyReviews] = useState( {} )
   const [mustWatch, setMustWatch] = useState( [] )
+  const [page, setPage] = React.useState(1);
 
   const addToFavorites = (movie) => {
     let newFavorites = [];
@@ -21,7 +22,6 @@ const MoviesContextProvider = (props) => {
   const addReview = (movie, review) => {
     setMyReviews( {...myReviews, [movie.id]: review } )
   };
-  console.log(myReviews);
   
   // We will use this function in a later section
   const removeFromFavorites = (movie) => {
@@ -35,7 +35,13 @@ const MoviesContextProvider = (props) => {
     playlist = [...mustWatch, movie.id];
     setMustWatch( playlist )
   };
-  console.log(mustWatch);
+
+  const changePage = (page) => {
+  let pageNum = 1
+  pageNum = page
+  setPage(pageNum)
+  console.log(pageNum)
+};
 
 
   return (
@@ -46,6 +52,8 @@ const MoviesContextProvider = (props) => {
         removeFromFavorites,
         addReview,
         addToWatchList,
+        changePage,
+        page
       }}
     >
       {props.children}

@@ -1,13 +1,17 @@
 import React from "react";
-// import { useParams } from "react-router-dom";
 import { getMovies } from "../api/tmdb-api";
 import PageTemplate from '../components/templateMovieListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
+import { useContext } from "react";
+import { MoviesContext } from "../contexts/moviesContext";
 
 const HomePage = (props) => {
-  const {  data , error, isLoading, isError }  = useQuery('discover',getMovies)
+  const context = useContext(MoviesContext);
+  let  pageNum = context.page
+  const {  data , error, isLoading, isError }  = useQuery(['discover', {pageNum: pageNum}]
+  ,getMovies)
 
   if (isLoading) {
     return <Spinner />
@@ -33,6 +37,7 @@ const HomePage = (props) => {
         return <AddToFavoritesIcon movie={movie} />
       }}
     />
+
 );
 };
 export default HomePage;

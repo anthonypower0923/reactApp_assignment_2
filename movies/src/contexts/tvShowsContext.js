@@ -6,6 +6,7 @@ const TVShowsContextProvider = (props) => {
   const [favorites, setFavorites] = useState( [] )
   const [myReviews, setMyReviews] = useState( {} )
   const [mustWatch, setMustWatch] = useState( [] )
+  const [page, setPage] = React.useState(1);
 
   const addToFavorites = (show) => {
     let newFavorites = [];
@@ -35,6 +36,13 @@ const TVShowsContextProvider = (props) => {
     setMustWatch( playlist )
   };
 
+  const changePage = (page) => {
+    let pageNum = 1
+    pageNum = page
+    setPage(pageNum)
+    console.log(pageNum)
+  };
+
   return (
     <TVShowsContext.Provider
       value={{
@@ -43,6 +51,8 @@ const TVShowsContextProvider = (props) => {
         removeFromFavorites,
         addReview,
         addToWatchList,
+        changePage,
+        page
       }}
     >
       {props.children}

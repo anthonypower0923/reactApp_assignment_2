@@ -13,7 +13,7 @@ const ShowsByActorPage = (props) => {
       getShowsByActor
     );
 
-    // console.log(GetMoviesByActor(id))
+    console.log(data)
   
     if (isLoading) {
       return <Spinner />
