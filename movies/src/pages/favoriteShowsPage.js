@@ -8,6 +8,10 @@ import { TVShowsContext } from "../contexts/tvShowsContext";
 
 const FavoriteShowsPage = () => {
   const {favorites: showIds } = useContext(TVShowsContext);
+  const context = useContext(TVShowsContext);
+  let  pageNum = context.page
+  localStorage.clear()
+  localStorage.setItem("pageNum", pageNum);
 
   // Create an array of queries and run in parallel.
   const favoriteShowQueries = useQueries(

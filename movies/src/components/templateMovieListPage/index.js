@@ -15,6 +15,7 @@ function MovieListPageTemplate({ movies, title, action }) {
   const genreId = Number(genreFilter);
   const [page, setPage] = React.useState(1);
   const context = useContext(MoviesContext);
+  let pageNum =  parseInt(localStorage.getItem("pageNum"))
 
 
   let displayedMovies = movies
@@ -37,8 +38,8 @@ function MovieListPageTemplate({ movies, title, action }) {
 
   return (
     <Grid container sx={{ padding: '20px' }}>
-    <Typography>Page: {page}</Typography>
-    <Pagination count={5} page={page} onChange={handlePageChange} />
+    <Typography>Page: {pageNum}</Typography>
+    <Pagination count={5} page={pageNum} onChange={handlePageChange} />
       <Grid item xs={12}>
         <Header title={title} />
       </Grid>

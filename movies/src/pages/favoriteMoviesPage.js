@@ -9,6 +9,10 @@ import WriteReview from "../components/cardIcons/writeReview";
 
 const FavoriteMoviesPage = () => {
   const {favorites: movieIds } = useContext(MoviesContext);
+  const context = useContext(MoviesContext);
+  let  pageNum = context.page
+  localStorage.clear()
+  localStorage.setItem("pageNum", pageNum);
 
   // Create an array of queries and run in parallel.
   const favoriteMovieQueries = useQueries(

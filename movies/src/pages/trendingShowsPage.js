@@ -10,6 +10,8 @@ import { useContext } from "react";
 const TrendingShowsPage = (props) => {
   const context = useContext(TVShowsContext);
   let  pageNum = context.page
+  localStorage.clear()
+  localStorage.setItem("pageNum", pageNum);
   const {  data , error, isLoading, isError }  = useQuery(['trendingShows', {pageNum: pageNum}]
   ,getTrendingShows)
 

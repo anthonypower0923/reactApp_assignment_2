@@ -10,6 +10,8 @@ import { MoviesContext } from "../contexts/moviesContext"
 const HomePage = (props) => {
   const context = useContext(MoviesContext);
   let  pageNum = context.page
+  localStorage.clear()
+  localStorage.setItem("pageNum", pageNum);
   const {  data , error, isLoading, isError }  = useQuery(['upcoming', {pageNum: pageNum}]
   ,getUpcomingMovies)
 
