@@ -76,7 +76,7 @@ const ShowDetails = ({ show }) => {  // Don't miss this!
           ))}
       </Paper>
       <Paper component="ul" sx={{...root}}>
-      <Button component={Link} to={`/similar/${show.id}`} variant="contained" color="primary">
+      <Button component={Link} to={`/tv/similar/${show.id}`} variant="contained" color="primary">
   Similar Shows
 </Button>
 <ShowCredits show={show} />

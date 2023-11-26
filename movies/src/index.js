@@ -73,7 +73,7 @@ const App = () => {
               <ShowReviewPage /> 
             </TVShowsContextProvider>
             } />
-            <Route path="/similar/:id" element={
+            <Route path="/tv/similar/:id" element={
             <TVShowsContextProvider>
               <SimilarShowsPage/> 
             </TVShowsContextProvider>
