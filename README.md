@@ -1,4 +1,4 @@
-# Assignment 1 - ReactJS app.
+# Assignment 2 - ReactJS app.
 
 Name: Anthony Power
 
