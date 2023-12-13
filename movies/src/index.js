@@ -1,3 +1,4 @@
+// Added comment to be able to commit
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Navigate, Routes} from "react-router-dom";
