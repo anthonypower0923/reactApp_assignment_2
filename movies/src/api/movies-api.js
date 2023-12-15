@@ -19,3 +19,27 @@ export const signup = async (username, password) => {
     });
     return response.json();
 };
+
+export const getMovies = async () => {
+    const response = await fetch(
+      'http://localhost:8080/api/movies', {
+    }
+    )
+    return response.json();
+  };
+
+  export const getUpcoming = async () => {
+    const response = await fetch(
+      'http://localhost:8080/api/movies/tmdb/upcoming', {
+    }
+    )
+    return response.json();
+  };
+
+  export const getGenres = async () => {
+    const response = await fetch(
+      'http://localhost:8080/api/movies/tmdb/genres', {
+    }
+    )
+    return response.json();
+  };
