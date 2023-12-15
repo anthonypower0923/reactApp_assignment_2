@@ -26,6 +26,7 @@ import ShowsByActorPage from "./pages/showsByActor";
 import LoginPage from "./pages/loginPage";
 import AuthContextProvider from "./contexts/authContext";
 import ProtectedRoutes from "./protectedRoutes";
+import SignUpPage from "./pages/signUpPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -47,6 +48,7 @@ const App = () => {
         <Routes>
         <Route path="/reviews/form" element={ <AddMovieReviewPage /> } />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={ <SignUpPage /> } />
             <Route element={<ProtectedRoutes />}>
           <Route path="/movies/favorites" element={<FavoriteMoviesPage />} />
           </Route>
@@ -71,11 +73,13 @@ const App = () => {
               <TrendingShowsPage /> 
             </TVShowsContextProvider>
             } />
+            {/* <Route element={<ProtectedRoutes />}> */}
             <Route path="/tv/favorite" element={
             <TVShowsContextProvider>
               <FavoriteShowsPage /> 
             </TVShowsContextProvider>
             } />
+            {/* </Route> */}
             <Route path="/tvReviews/:id" element={
             <TVShowsContextProvider>
               <ShowReviewPage /> 
