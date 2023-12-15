@@ -23,6 +23,9 @@ import SimilarMoviesPage from "./pages/similarMoviesPage";
 import SimilarShowsPage from "./pages/similarShowsPage";
 import MovieByActorPage from "./pages/movieByActorPage";
 import ShowsByActorPage from "./pages/showsByActor";
+import LoginPage from "./pages/loginPage";
+import AuthContextProvider from "./contexts/authContext";
+import ProtectedRoutes from "./protectedRoutes";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -38,11 +41,15 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
+      <AuthContextProvider>
         <SiteHeader />
         <MoviesContextProvider>
         <Routes>
         <Route path="/reviews/form" element={ <AddMovieReviewPage /> } />
+        <Route path="/login" element={<LoginPage />} />
+            <Route element={<ProtectedRoutes />}>
           <Route path="/movies/favorites" element={<FavoriteMoviesPage />} />
+          </Route>
           <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
           <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
           <Route path="/credits/:id" element={ <MovieCreditsPage /> } />
@@ -88,6 +95,7 @@ const App = () => {
           <Route path="*" element={ <Navigate to="/" /> } />
         </Routes>
         </MoviesContextProvider>
+        </AuthContextProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
