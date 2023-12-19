@@ -49,15 +49,20 @@ const App = () => {
         <Route path="/reviews/form" element={ <AddMovieReviewPage /> } />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={ <SignUpPage /> } />
-            <Route element={<ProtectedRoutes />}>
-          <Route path="/movies/favorites" element={<FavoriteMoviesPage />} />
-          </Route>
           <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
           <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
           <Route path="/credits/:id" element={ <MovieCreditsPage /> } />
           <Route path="/similar/:id" element={ <SimilarMoviesPage /> } />
           <Route path="/movies/:id" element={<MoviePage />} />
           <Route path="/movies/actor/:id" element={<MovieByActorPage />} />
+          <Route element={<ProtectedRoutes />}>
+          <Route path="/movies/favorites" element={<FavoriteMoviesPage />} />
+          <Route path="/tv/favorite" element={
+            <TVShowsContextProvider>
+              <FavoriteShowsPage /> 
+            </TVShowsContextProvider>
+            } />
+          </Route>
           <Route path="/tv/discover" element={
             <TVShowsContextProvider>
               <TVHomePage /> 
@@ -74,11 +79,11 @@ const App = () => {
             </TVShowsContextProvider>
             } />
             {/* <Route element={<ProtectedRoutes />}> */}
-            <Route path="/tv/favorite" element={
+            {/* <Route path="/tv/favorite" element={
             <TVShowsContextProvider>
               <FavoriteShowsPage /> 
-            </TVShowsContextProvider>
-            } />
+            </TVShowsContextProvider> */}
+            {/* } /> */}
             {/* </Route> */}
             <Route path="/tvReviews/:id" element={
             <TVShowsContextProvider>

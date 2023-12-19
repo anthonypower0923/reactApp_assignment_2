@@ -55,6 +55,14 @@ export const getMovies = async () => {
     return response.json();
   };
 
+  export const getShows = async () => {
+    const response = await fetch(
+      'http://localhost:8080/api/shows', {
+    }
+    )
+    return response.json();
+  };
+
   export const getUpcoming = async () => {
     const response = await fetch(
       'http://localhost:8080/api/movies/tmdb/upcoming', {
@@ -70,6 +78,23 @@ export const getMovies = async () => {
     )
     return response.json();
   };
+
+  export const getShowGenres = async () => {
+    const response = await fetch(
+      'http://localhost:8080/api/shows/tmdb/genres', {
+    }
+    )
+    return response.json();
+  };
+
+  export const getTrendingShows = async () => {
+    const response = await fetch(
+      'http://localhost:8080/api/shows/tmdb/trending', {
+    }
+    )
+    return response.json();
+  };
+  
 
   export const getFavourites = async () => {
     const response = await fetch(

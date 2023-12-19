@@ -1,5 +1,5 @@
 import React from "react";
-import {getShows} from "../api/tmdb-api";
+import {getShows} from "../api/movies-api";
 import PageTemplate from '../components/templateTVShowListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
@@ -11,7 +11,7 @@ const TVHomePage = (props) => {
   const context = useContext(TVShowsContext);
   let  pageNum = context.page
   localStorage.setItem("pageNum", pageNum);
-  const {  data , error, isLoading, isError }  = useQuery(['discoverShows', {pageNum: pageNum}]
+  const {  data , error, isLoading, isError }  = useQuery('discoverShows'
   ,getShows)
 
   if (isLoading) {
