@@ -23,6 +23,17 @@ export const signup = async (username, password) => {
     return response.json();
 };
 
+export const getFavourites = async () => {
+  const response = await fetch(
+    'http://localhost:8080/api/favouritemovies', {
+    headers: {
+      'Authorization': localStorage.getItem('token')
+    }
+  }
+  )
+  return response.json();
+};
+
 export const addFavourite = async (movie) => {
   const response = await fetch('http://localhost:8080/api/favouritemovies/', {
       headers: {
@@ -40,6 +51,41 @@ export const removeFavourite = async (movie) => {
   const id  = movie.id;
   console.log(movie.id)
   fetch(`http://localhost:8080/api/favouritemovies/${id}`, {
+    headers: {
+      'Authorization': localStorage.getItem('token')
+    },
+      method: 'DELETE',
+  });
+};
+
+export const getFavouriteShows = async () => {
+  const response = await fetch(
+    'http://localhost:8080/api/favouriteshows/', {
+    headers: {
+      'Authorization': localStorage.getItem('token')
+    }
+  }
+  )
+  return response.json();
+};
+
+export const addFavouriteShow = async (show) => {
+  const response = await fetch('http://localhost:8080/api/favouriteshows/', {
+      headers: {
+          'Content-Type': 'application/json',
+          //'Authorization': localStorage.getItem('token')
+          'Authorization': window.localStorage.getItem('token')
+      },
+      method: 'post',
+      body: JSON.stringify(show)
+  });
+  return response.json();
+};
+
+export const removeFavouriteShow = async (show) => {
+  const id  = show.id;
+  console.log(show.id)
+  fetch(`http://localhost:8080/api/favouriteshows/${id}`, {
     headers: {
       'Authorization': localStorage.getItem('token')
     },
@@ -95,14 +141,3 @@ export const getMovies = async () => {
     return response.json();
   };
   
-
-  export const getFavourites = async () => {
-    const response = await fetch(
-      'http://localhost:8080/api/favouritemovies', {
-      headers: {
-        'Authorization': localStorage.getItem('token')
-      }
-    }
-    )
-    return response.json();
-  };
