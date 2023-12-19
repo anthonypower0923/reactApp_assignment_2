@@ -57,11 +57,11 @@ const App = () => {
           <Route path="/movies/actor/:id" element={<MovieByActorPage />} />
           <Route element={<ProtectedRoutes />}>
           <Route path="/movies/favorites" element={<FavoriteMoviesPage />} />
-          <Route path="/tv/favorite" element={
+          {/* <Route path="/tv/favorite" element={
             <TVShowsContextProvider>
               <FavoriteShowsPage /> 
             </TVShowsContextProvider>
-            } />
+            } /> */}
           </Route>
           <Route path="/tv/discover" element={
             <TVShowsContextProvider>
@@ -79,11 +79,11 @@ const App = () => {
             </TVShowsContextProvider>
             } />
             {/* <Route element={<ProtectedRoutes />}> */}
-            {/* <Route path="/tv/favorite" element={
+            <Route path="/tv/favorite" element={
             <TVShowsContextProvider>
               <FavoriteShowsPage /> 
-            </TVShowsContextProvider> */}
-            {/* } /> */}
+            </TVShowsContextProvider>
+             } />
             {/* </Route> */}
             <Route path="/tvReviews/:id" element={
             <TVShowsContextProvider>
