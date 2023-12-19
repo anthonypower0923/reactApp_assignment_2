@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { addFavourite, removeFavourite } from "../api/movies-api";
 
 export const MoviesContext = React.createContext(null);
 
@@ -9,6 +10,7 @@ const MoviesContextProvider = (props) => {
   const [page, setPage] = React.useState(1);
 
   const addToFavorites = (movie) => {
+    console.log(movie)
     let newFavorites = [];
     if (!favorites.includes(movie.id)){
       newFavorites = [...favorites, movie.id];
@@ -17,6 +19,7 @@ const MoviesContextProvider = (props) => {
       newFavorites = [...favorites];
     }
     setFavorites(newFavorites)
+    addFavourite(movie)
   };
 
   const addReview = (movie, review) => {
@@ -25,9 +28,10 @@ const MoviesContextProvider = (props) => {
   
   // We will use this function in a later section
   const removeFromFavorites = (movie) => {
-    setFavorites( favorites.filter(
-      (mId) => mId !== movie.id
-    ) )
+    removeFavourite(movie)
+    // setFavorites( favorites.filter(
+    //   (mId) => mId !== movie.id
+    // ) )
   };
 
   const addToWatchList = (movie) => {

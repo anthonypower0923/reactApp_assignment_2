@@ -12,6 +12,7 @@ const AuthContextProvider = (props) => {
   //Function to put JWT token in local storage.
   const setToken = (data) => {
     localStorage.setItem("token", data);
+    console.log(localStorage)
     setAuthToken(data);
   }
 

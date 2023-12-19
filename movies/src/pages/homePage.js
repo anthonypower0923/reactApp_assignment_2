@@ -1,5 +1,5 @@
 import React from "react";
-import { getMovies } from "../api/movies-api";
+import { addFavourite, getMovies } from "../api/movies-api";
 import PageTemplate from '../components/templateMovieListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
@@ -10,7 +10,7 @@ import { MoviesContext } from "../contexts/moviesContext";
 const HomePage = (props) => {
   const context = useContext(MoviesContext);
   let  pageNum = context.page
-  localStorage.clear()
+  // localStorage.clear()
   localStorage.setItem("pageNum", pageNum);
   const {  data, error, isLoading, isError }  = useQuery('discover', getMovies)
 
