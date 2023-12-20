@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import PageTemplate from "../components/templateTVShowListPage";
-import { useQueries , useQuery } from "react-query";
-import { getFavouriteShows } from "../api/movies-api";
+import { useQueries } from "react-query";
+// import { getFavouriteShows } from "../api/movies-api";
 import Spinner from '../components/spinner'
 import RemoveFromFavorites from "../components/cardIcons/removeFromFavoritesTV";
 import { TVShowsContext } from "../contexts/tvShowsContext";
